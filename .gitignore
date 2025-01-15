@@ -1,0 +1,17 @@
+# Virtual environment
+myenv/
+
+# Python files
+__pycache__/
+*.pyc
+
+# Environment files
+.env
+
+# Django database
+db.sqlite3
+
+# Other files
+*.log
+staticfiles/
+media/
