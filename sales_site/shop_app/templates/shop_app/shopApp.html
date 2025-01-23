@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Sales</title>
+    <link rel="stylesheet" href="{% static 'shop_app/style.css' %}">
+</head>
+<body>
+    <div class="page-title">
+        <h1>Available Cars</h1>
+    </div>
+    <div class="page-content">
+        <ul>
+            {% for car in shop_app %}
+                <div class="block-content">
+                    <li>
+                        <img src="{% if car.image %}{{ car.image.url }}{% else %}{{ 'default_image.jpg' }}{% endif %}" 
+                             alt="{{ car.make }} {{ car.model }}" width="200">
+                        <h3>{{ car.make }} {{ car.model }}</h3>
+                        <div class="row">
+                            <p>{{ car.year }}</p>
+                            {% if car.mileage == 0 %}
+                                <p>New</p>
+                            {% else %}
+                                <p>{{ car.mileage }} km</p>
+                            {% endif %}
+                        </div>
+                        <div class="row">
+                            <p>{{ car.get_fuel_type_display }}</p>
+                            <p>{{ car.get_type_display }}</p>
+                        </div>
+                        <p class="txt">{{ car.description }}</p>
+                        <div class="price">
+                            <p><strong>Price: ${{ car.price }} $</strong></p>
+                        </div>
+                    </li>
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+    <br/></br/>
+    Page 
+</body>
+</html>
