@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib import admin
 
 class Car(models.Model):
     TRANSMISION_TYPE_CHOICE = [
@@ -25,6 +26,7 @@ class Car(models.Model):
         max_length=10, choices=TRANSMISION_TYPE_CHOICE, default='mecanica'
     )
     image = models.ImageField(upload_to='car_images/', null=True, blank=True)
+    order = models.IntegerField(default=0)
 
     def __str__(self):
         return f'{self.year} {self.make} {self.model}'

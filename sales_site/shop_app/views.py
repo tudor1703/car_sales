@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 def car_list(request):
     shop_app = Car.objects.all()
 
-    p = Paginator(Car.objects.all(), 2)
+    p = Paginator(Car.objects.all().order_by('order'), 2)
     page = request.GET.get('page')
     cars = p.get_page(page)
 
