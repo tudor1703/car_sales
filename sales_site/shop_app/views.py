@@ -1,17 +1,26 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Car
+from .forms import OrderForm
 from django.core.paginator import Paginator
 
-# Create your views here.
+VALID_SORT_FIELDS = {'make', 'model', 'year'}
 
 def car_list(request):
-    shop_app = Car.objects.all()
+    order_by = request.GET.get('order_by', 'make')
 
-    p = Paginator(Car.objects.all().order_by('order'), 2)
-    page = request.GET.get('page')
-    cars = p.get_page(page)
+    if order_by not in VALID_SORT_FIELDS:
+        order_by = 'make'
 
-    return render(request, 'shop_app/shopApp.html', 
-                  {'shop_app': shop_app,
-                   'cars': cars})
+    cars = Car.objects.all().order_by(order_by)
+
+    paginator = Paginator(cars, 2) 
+    page_number = request.GET.get('page') 
+    cars_page = paginator.get_page(page_number)
+
+    form = OrderForm(initial={'order_by': order_by}) 
+
+    return render(request, 'shop_app/shopApp.html', {
+        'cars': cars_page,
+        'form': form,
+        'order_by': order_by,  
+    })
