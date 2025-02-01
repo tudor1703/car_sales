@@ -1,7 +1,7 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from .models import Car
 from .forms import OrderForm
-from django.core.paginator import Paginator
 
 VALID_SORT_FIELDS = {'make', 'model', 'year'}
 

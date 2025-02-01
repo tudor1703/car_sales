@@ -1,7 +1,4 @@
 from django import forms
-from .models import Car
-
-from django import forms
 
 CHOICES = [
     ('make', 'Make'),
