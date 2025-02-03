@@ -14,7 +14,7 @@
     </div>
     <div class="page-content">
         <ul>
-            {% for car in shop_app %}
+            {% for car in cars %}
                 <div class="block-content">
                     <li>
                         <img src="{% if car.image %}{{ car.image.url }}{% else %}{{ 'default_image.jpg' }}{% endif %}" 
@@ -41,7 +41,24 @@
             {% endfor %}
         </ul>
         <br/></br/>
-        Page 
+        <hr>
+        <br/></br/>
+        <div class="pagination">
+            {% if cars.has_previous %}
+                <a href="?page=1" class="btn btn-first">&laquo; First</a>
+                <a href="?page={{ cars.previous_page_number }}" class="btn btn-prev">Previous</a>
+            {% endif %}
+
+            <span class="page-info">
+                Page {{ cars.number }} of {{ cars.paginator.num_pages }}
+            </span>
+
+            {% if cars.has_next %}
+                <a href="?page={{ cars.next_page_number }}" class="btn btn-next">Next</a>
+                <a href="?page={{ cars.paginator.num_pages }}" class="btn btn-last">Last &raquo;</a>
+            {% endif %}
+        </div>
     </div>
+    <br/></br/>
 </body>
 </html>
