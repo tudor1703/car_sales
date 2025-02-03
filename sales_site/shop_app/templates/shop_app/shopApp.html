@@ -13,6 +13,11 @@
         <h1>Available Cars</h1>
     </div>
     <div class="page-content">
+        <form method="get">
+            {{ form.order_by.label_tag }}
+            {{ form.order_by }}
+            <button type="submit">Sort</button>
+        </form>
         <ul>
             {% for car in cars %}
                 <div class="block-content">
@@ -45,8 +50,8 @@
         <br/></br/>
         <div class="pagination">
             {% if cars.has_previous %}
-                <a href="?page=1" class="btn btn-first">&laquo; First</a>
-                <a href="?page={{ cars.previous_page_number }}" class="btn btn-prev">Previous</a>
+                <a href="?page=1&order_by={{ request.GET.order_by }}" class="btn btn-first">&laquo; First</a>
+                <a href="?page={{ cars.previous_page_number }}&order_by={{ request.GET.order_by }}" class="btn btn-prev">Previous</a>
             {% endif %}
 
             <span class="page-info">
@@ -54,8 +59,8 @@
             </span>
 
             {% if cars.has_next %}
-                <a href="?page={{ cars.next_page_number }}" class="btn btn-next">Next</a>
-                <a href="?page={{ cars.paginator.num_pages }}" class="btn btn-last">Last &raquo;</a>
+                <a href="?page={{ cars.next_page_number }}&order_by={{ request.GET.order_py }}" class="btn btn-next">Next</a>
+                <a href="?page={{ cars.paginator.num_pages }}&order_by={{ request.GET.order_by }}" class="btn btn-last">Last &raquo;</a>
             {% endif %}
         </div>
     </div>
