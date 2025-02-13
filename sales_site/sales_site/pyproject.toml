@@ -1,0 +1,22 @@
+[tool.ruff]
+select = [
+    "F",
+    "E",
+    "D",
+    "I"
+]
+
+ignore = ["E501", "D212", "D412", "D413", "D205", "D407", "D406", "D203"]
+
+line-length = 88
+
+exclude = [
+    ".git",
+    "__pycache__",
+    "migrations/",
+    "*.pyc",
+    "env/",
+    ".venv/",
+]
+
+fixable = ["E", "F", "I"]
