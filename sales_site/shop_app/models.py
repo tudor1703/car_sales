@@ -19,7 +19,7 @@ class Car(models.Model):
     mileage = models.PositiveBigIntegerField(default=0)
     fuel_type = models.CharField(max_length=16, choices=CONSUME_TYPE, default="diesel")
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     type = models.CharField(
         max_length=10, choices=TRANSMISION_TYPE_CHOICE, default="mecanica"
     )

@@ -3,3 +3,10 @@ repos:
     rev: v0.0.241 
     hooks:
       - id: ruff
+
+# repos:
+#   - repo: https://github.com/tudor1703/car_sales
+#     rev: "latest"
+#     hooks:
+#       - id: ruff
+#       - id: ruff-format
