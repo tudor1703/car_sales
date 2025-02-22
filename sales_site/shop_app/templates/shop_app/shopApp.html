@@ -9,61 +9,50 @@
     <link rel="stylesheet" href="{% static 'shop_app/style.css' %}">
 </head>
 <body>
-    <div class="page-title">
+
+    <header>
         <h1>Available Cars</h1>
-    </div>
-    <div class="page-content">
-        <form method="get">
+    </header>
+
+    <main class="container">
+        <form method="get" class="sort-form">
             {{ form.order_by.label_tag }}
             {{ form.order_by }}
             <button type="submit">Sort</button>
         </form>
-        <ul>
+
+        <ul class="car-list">
             {% for car in cars %}
-                <div class="block-content">
-                    <li>
-                        <img src="{% if car.image %}{{ car.image.url }}{% else %}{{ 'default_image.jpg' }}{% endif %}" 
-                             alt="{{ car.make }} {{ car.model }}" width="200">
-                        <h3>{{ car.make }} {{ car.model }}</h3>
-                        <div class="row">
-                            <p>{{ car.year }}</p>
-                            {% if car.mileage == 0 %}
-                                <p>New</p>
-                            {% else %}
-                                <p>{{ car.mileage }} km</p>
-                            {% endif %}
-                        </div>
-                        <div class="row">
-                            <p>{{ car.get_fuel_type_display }}</p>
-                            <p>{{ car.get_type_display }}</p>
-                        </div>
-                        <p class="txt">{{ car.description }}</p>
-                        <div class="price">
-                            <p><strong>Price: ${{ car.price }} $</strong></p>
-                        </div>
-                    </li>
-                </div>
+                <li class="car-card">
+                    <img src="{% if car.image %}{{ car.image.url }}{% else %}{% static 'shop_app/default_image.jpg' %}{% endif %}" 
+                         alt="{{ car.make }} {{ car.model }}" class="car-image">
+                    <h3>{{ car.make }} {{ car.model }}</h3>
+                    <div class="car-details">
+                        <p>Year: {{ car.year }}</p>
+                        <p>{% if car.mileage == 0 %}New{% else %}{{ car.mileage }} km{% endif %}</p>
+                        <p>Fuel: {{ car.get_fuel_type_display }}</p>
+                        <p>Type: {{ car.get_type_display }}</p>
+                    </div>
+                    <p class="car-description">{{ car.description }}</p>
+                    <p class="car-price"><strong>Price: ${{ car.price }}</strong></p>
+                </li>
             {% endfor %}
         </ul>
-        <br/></br/>
-        <hr>
-        <br/></br/>
+
         <div class="pagination">
             {% if cars.has_previous %}
-                <a href="?page=1&order_by={{ request.GET.order_by }}" class="btn btn-first">&laquo; First</a>
-                <a href="?page={{ cars.previous_page_number }}&order_by={{ request.GET.order_by }}" class="btn btn-prev">Previous</a>
+                <a href="?page=1&order_by={{ request.GET.order_by }}" class="btn">First</a>
+                <a href="?page={{ cars.previous_page_number }}&order_by={{ request.GET.order_by }}" class="btn">Previous</a>
             {% endif %}
 
-            <span class="page-info">
-                Page {{ cars.number }} of {{ cars.paginator.num_pages }}
-            </span>
+            <span class="page-info">Page {{ cars.number }} of {{ cars.paginator.num_pages }}</span>
 
             {% if cars.has_next %}
-                <a href="?page={{ cars.next_page_number }}&order_by={{ request.GET.order_py }}" class="btn btn-next">Next</a>
-                <a href="?page={{ cars.paginator.num_pages }}&order_by={{ request.GET.order_by }}" class="btn btn-last">Last &raquo;</a>
+                <a href="?page={{ cars.next_page_number }}&order_by={{ request.GET.order_by }}" class="btn">Next</a>
+                <a href="?page={{ cars.paginator.num_pages }}&order_by={{ request.GET.order_by }}" class="btn">Last</a>
             {% endif %}
         </div>
-    </div>
-    <br/></br/>
+    </main>
+
 </body>
 </html>

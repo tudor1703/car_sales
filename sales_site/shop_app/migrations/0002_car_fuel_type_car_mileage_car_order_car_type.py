@@ -4,30 +4,43 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shop_app', '0001_initial'),
+        ("shop_app", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='car',
-            name='fuel_type',
-            field=models.CharField(choices=[('diesel', 'Diesel'), ('plugin_hybrid', 'Plug-in Hybrid'), ('hybrid', 'Hybrid'), ('benzine', 'Benzine'), ('electric', 'Electric')], default='diesel', max_length=16),
+            model_name="car",
+            name="fuel_type",
+            field=models.CharField(
+                choices=[
+                    ("diesel", "Diesel"),
+                    ("plugin_hybrid", "Plug-in Hybrid"),
+                    ("hybrid", "Hybrid"),
+                    ("benzine", "Benzine"),
+                    ("electric", "Electric"),
+                ],
+                default="diesel",
+                max_length=16,
+            ),
         ),
         migrations.AddField(
-            model_name='car',
-            name='mileage',
+            model_name="car",
+            name="mileage",
             field=models.PositiveBigIntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='car',
-            name='order',
+            model_name="car",
+            name="order",
             field=models.IntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='car',
-            name='type',
-            field=models.CharField(choices=[('mecanica', 'Mecanica'), ('automata', 'Automata')], default='mecanica', max_length=10),
+            model_name="car",
+            name="type",
+            field=models.CharField(
+                choices=[("mecanica", "Mecanica"), ("automata", "Automata")],
+                default="mecanica",
+                max_length=10,
+            ),
         ),
     ]
