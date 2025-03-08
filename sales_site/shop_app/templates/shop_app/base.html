@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Sales</title>
+    <link rel="stylesheet" href="{% static 'shop_app/main.css' %}">
+    <link rel="stylesheet" href="{% static 'shop_app/login.css' %}">
+    <link rel="stylesheet" href="{% static 'shop_app/logout.css' %}">
+    <link rel="stylesheet" href="{% static 'shop_app/navbar.css' %}">
+</head>
+<body>
+    {% include 'shop_app/navbar.html' %}
+
+    <main>
+        {% block content %}
+
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Your Website. All rights reserved.</p>
+    </footer>    
+</body>
+</html>
