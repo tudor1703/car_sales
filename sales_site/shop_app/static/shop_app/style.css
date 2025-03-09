@@ -1,0 +1,144 @@
+body, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #D0DDD0;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.page-title {
+    width: 100%;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+h1 {
+    margin: 0;
+    padding-top: 15px;
+    text-align: center;
+}
+
+img {
+    border: 1px solid black;
+}
+
+.page-content {
+    background-color: #FFFDF0;
+    width: 70%;
+    margin: 0 auto;
+    padding: 50px 30px;
+}
+
+.block-content {
+    border: 1px solid grey;
+    margin: 20px auto;
+    width: 60%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.block-content p {
+    width: 100%;
+    align-items: center;
+}
+
+img {
+    width: 100%;
+}
+
+.block-content h3 {
+    text-align: center;
+}
+
+
+.row {
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center; 
+    gap: 2px; 
+    margin: 10px 0;
+}
+
+.row p {
+    margin: 0; 
+    padding: 0;
+    flex: 1; 
+}
+
+
+.price {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    height: 60px;
+    padding-top: 15px;
+    border-top: 2px solid black;
+}
+
+
+/* pagination*/
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+
+.pagination .btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    color: white;
+    background-color: #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+.pagination .btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+
+.pagination .btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.pagination .page-info {
+    display: inline-block;
+    margin: 0 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.pagination .btn-first,
+.pagination .btn-last {
+    background-color: #28a745;
+}
+
+.pagination .btn-first:hover,
+.pagination .btn-last:hover {
+    background-color: #218838;
+}
+
+.pagination .btn-prev,
+.pagination .btn-next {
+    background-color: #BFBBA9;
+}
+
+.pagination .btn-prev:hover,
+.pagination .btn-next:hover {
+    background-color: #e0a800;
+}
