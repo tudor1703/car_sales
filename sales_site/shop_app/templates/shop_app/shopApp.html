@@ -1,18 +1,22 @@
+{% extends 'shop_app/base.html' %}
 {% load static %}
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{% if message.tags == 'success' %}success{% else %}danger{% endif %} alert-dismissible fade show" role="alert">
+        {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span>&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Sales</title>
-    <link rel="stylesheet" href="{% static 'shop_app/style.css' %}">
-</head>
-<body>
-
+    {% block header %}
     <header>
         <h1>Available Cars</h1>
     </header>
+    {% endblock %}
 
     <main class="container">
         <form method="get" class="sort-form">
@@ -34,7 +38,8 @@
                         <p>Type: {{ car.get_type_display }}</p>
                     </div>
                     <p class="car-description">{{ car.description }}</p>
-                    <p class="car-price"><strong>Price: ${{ car.price }}</strong></p>
+                    <p class="car-price"><strong>Price: ${{ car.price }}
+                    </strong></p>
                 </li>
             {% endfor %}
         </ul>
@@ -56,3 +61,4 @@
 
 </body>
 </html>
+{% endblock %}
