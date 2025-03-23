@@ -70,7 +70,7 @@ def register_user(request):
             messages.success(request, "You have registered Succesfully!")
             return redirect('car_list')
         else:
-            messages.success(request, "Whooops something went wrong! Try again")
+            messages.error(request, "Whooops something went wrong! Try again")
             return redirect('register')
 
     return render(request, 'shop_app/register.html', {'form': form})
